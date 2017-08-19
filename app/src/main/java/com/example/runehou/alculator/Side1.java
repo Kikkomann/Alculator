@@ -15,6 +15,7 @@ import android.widget.Toast;
      - DK: 12 g.
      - USA: 14 g.
      - UK: 8 g.
+     - Aus: 10 g.
  */
 public class Side1 extends AppCompatActivity implements View.OnClickListener {
     EditText vol, alc, price;
@@ -32,6 +33,7 @@ public class Side1 extends AppCompatActivity implements View.OnClickListener {
 
         alc = (EditText) findViewById(R.id.alc);
         vol = (EditText) findViewById(R.id.vol);
+        price = (EditText) findViewById(R.id.price);
         units = (TextView) findViewById(R.id.units);
         unitPrice = (TextView) findViewById(R.id.unitprice);
         calcBtn = (Button) findViewById(R.id.calculateBtn);
@@ -47,9 +49,11 @@ public class Side1 extends AppCompatActivity implements View.OnClickListener {
         if (v == calcBtn) {
             double volInput = Double.parseDouble(vol.getText().toString()), alcInput = Double.parseDouble(alc.getText().toString());
             unitResult = volInput * alcInput * MASSEFYLDE / 120;
+            double pricePrUnit = Math.round(Double.parseDouble(price.getText().toString()) / (Math.round(unitResult * 10.0) / 10.0) * 100);
+            double roundedPrice = pricePrUnit / 100;
 
-
-            unitPrice.setText("Antal genstande: " +  Math.round(unitResult * 10.0) / 10.0);
+            units.setText("Antal genstande: " +  Math.round(unitResult * 10.0) / 10.0);
+            unitPrice.setText("AUD pr. genstand: $" + roundedPrice + "\nDKK pr. genstand: " + roundedPrice * 5 + " kr.");
         }
     }
 }
