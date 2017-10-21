@@ -1,5 +1,15 @@
 <resources>
     <string name="app_name">Alculator</string>
     <string name="title_activity_main">MainActivity</string>
-    <string name="title_activity_calculator">Calculator</string>
+    <string name="title_activity_calculator">Alculator</string>
+
+
+    <string-array name="currencies_array">
+        <item>DKK</item>
+        <item>AUD</item>
+        <item>GBP</item>
+        <item>USD</item>
+    </string-array>
+
+
 </resources>
